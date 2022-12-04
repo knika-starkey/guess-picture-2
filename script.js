@@ -17,10 +17,12 @@
 window.onload = function () {
   let images = document.getElementsByTagName("img");
   for (let i = 0; i < images.length; i++) {
-    images[i].onclick = showAnswer;
+    images[i].onmouseover = showAnswer;
+    images[i].onmouseout = showBlur;
   }
 };
-function showBlur(image) {
+function showBlur(event) {
+  let image = event.target;
   let name = image.id;
   image.src = `images/${name}blur.jpg`;
 }
@@ -30,5 +32,5 @@ function showAnswer(event) {
   let name = image.id;
   name = name + ".jpg";
   image.src = "images/" + name;
-  setTimeout(showBlur, 2000, image);
+  // setTimeout(showBlur, 2000, image);
 }
